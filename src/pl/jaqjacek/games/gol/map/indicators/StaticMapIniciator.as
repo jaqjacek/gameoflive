@@ -1,4 +1,4 @@
-package pl.jaqjacek.games.gol 
+package pl.jaqjacek.games.gol.map.indicators 
 {
 	/**
 	 * ...
@@ -33,10 +33,9 @@ package pl.jaqjacek.games.gol
 			{				
 				for (var i:int = 0; i < item.length; i++) 
 				{
-					tmpCell = map.getCell(startX + i,startY)
-					tmpCell.state = item.charAt(i) == "1" ? true: false;
-					tmpCell.draw();
-					
+					tmpCell = map.getCell(startX + i, startY);
+					item.charAt(i) == '1' ? tmpCell.setAlive() : tmpCell.setDead();
+					tmpCell.draw()
 				}
 				startY++;
 			}

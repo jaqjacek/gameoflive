@@ -1,5 +1,7 @@
-package pl.jaqjacek.games.gol 
+package pl.jaqjacek.games.gol.map.indicators 
 {
+	import pl.jaqjacek.games.gol.map.Cell;
+	import pl.jaqjacek.games.gol.map.Map;
 	/**
 	 * ...
 	 * @author jaq
@@ -16,12 +18,14 @@ package pl.jaqjacek.games.gol
 		
 		public function inicializeMap(map:Map):void 
 		{
+			var tmpCell:Cell;
 			for (var i:int = 0; i < map.getWidth(); i++) 
 			{
 				for (var j:int = 0; j < map.getHeight(); j++) 
 				{
-					map.getCell(i, j).state = getRandomState()
-					map.getCell(i, j).draw();
+					tmpCell = map.getCell(i, j)
+					getRandomState() ? tmpCell.setAlive() : tmpCell.setDead();
+					tmpCell.draw();
 				}
 			}
 		}

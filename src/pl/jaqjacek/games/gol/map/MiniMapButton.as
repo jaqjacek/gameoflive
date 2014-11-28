@@ -1,10 +1,11 @@
-package pl.jaqjacek.games.gol 
+package pl.jaqjacek.games.gol.map 
 {
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
-	import pl.jaqjacek.games.gol.Map
+	import pl.jaqjacek.games.gol.Config;
+	
 	/**
 	 * ...
 	 * @author jaq
@@ -14,19 +15,13 @@ package pl.jaqjacek.games.gol
 		private var _patternText:TextField;
 		public function MiniMapButton() 
 		{		
-			super(10, 10);	
-			_container.mouseChildren = false;			
+			super(Config.MINIMAP_WIDTH, Config.MINIMAP_HEIGHT);
+			_container.mouseChildren = false;					
 		}
 		
-		override protected function inicializeCells():void 
+		override protected function findCellNeighboursAt(x:int, y:int):void 
 		{
-			super.inicializeCells();
-			
-		}
-		
-		override public function get container():Sprite 
-		{	
-			return _container
+			//don't fill cell neighbours
 		}
 		
 		public function initMinimapName():void 

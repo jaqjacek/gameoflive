@@ -3,10 +3,9 @@ package pl.jaqjacek.games.gameoflive.view
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.text.TextField;
-	import pl.jaqjacek.games.gol.MapIniciator;
-	import pl.jaqjacek.games.gol.MiniMapButton;
-	import pl.jaqjacek.games.gol.RandomMapIniciator;
+	import flash.text.TextField
+	import pl.jaqjacek.games.gol.map.indicators.RandomMapIniciator;
+	import pl.jaqjacek.games.gol.map.MiniMapButton;
 	/**
 	 * ...
 	 * @author jaq

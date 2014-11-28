@@ -1,5 +1,6 @@
-package pl.jaqjacek.games.gol 
+package pl.jaqjacek.games.gol.map.indicators 
 {
+	import pl.jaqjacek.games.gol.map.Map;
 	
 	/**
 	 * ...

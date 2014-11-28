@@ -8,9 +8,9 @@ package pl.jaqjacek.games.gameoflive.view
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	import org.osflash.signals.Signal;
-	import pl.jaqjacek.games.gol.Map;
-	import pl.jaqjacek.games.gol.RandomMapIniciator;
-	import pl.jaqjacek.games.gol.ResetIniciator;
+	import pl.jaqjacek.games.gol.map.indicators.RandomMapIniciator;
+	import pl.jaqjacek.games.gol.map.indicators.ResetIniciator;
+	import pl.jaqjacek.games.gol.map.Map;
 	/**
 	 * ...
 	 * @author jaq
@@ -58,6 +58,7 @@ package pl.jaqjacek.games.gameoflive.view
 			_map = new Map(20,20);
 			addChild(_map.container);
 			_map.container.visible = true;
+			_map.reset();
 		}
 		
 		public function run():void 
@@ -91,8 +92,6 @@ package pl.jaqjacek.games.gameoflive.view
 				break;
 			}
 		}
-		
-	
 		
 		public function show():void 
 		{
