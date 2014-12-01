@@ -1,17 +1,11 @@
 package pl.jaqjacek.games.gameoflive.controller {
 	import org.puremvc.as3.interfaces.ICommand;
-	import org.puremvc.as3.interfaces.INotification;
-	import org.puremvc.as3.patterns.command.SimpleCommand;
-	import pl.jaqjacek.games.gameoflive.AppMediator;
-	import pl.jaqjacek.games.gameoflive.Main;
-	import pl.jaqjacek.games.gameoflive.view.CycleView;
-	import pl.jaqjacek.games.gameoflive.view.IntroView;
-	import pl.jaqjacek.games.gameoflive.view.MenuView;
+	import org.puremvc.as3.patterns.command.MacroCommand;
 	/**
 	 * ...
 	 * @author jaq
 	 */
-	public class StartupCommand extends SimpleCommand implements ICommand
+	public class StartupCommand extends MacroCommand implements ICommand
 	{
 		
 		public function StartupCommand() 
@@ -19,13 +13,12 @@ package pl.jaqjacek.games.gameoflive.controller {
 			
 		}
 		
-		override public function execute(notification:INotification):void 
+		override protected function initializeMacroCommand():void 
 		{
-			facade.registerMediator(new AppMediator(notification.getBody() as Main));
+			addSubCommand(LoadMapInfoCommand);
+			addSubCommand(InitFirstIntroCommand);
 			//facade.sendNotification(MenuView.SHOW);
-			facade.sendNotification(IntroView.SHOW);
 		}
-		
 	}
 
 }
