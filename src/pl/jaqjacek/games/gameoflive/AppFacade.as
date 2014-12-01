@@ -3,6 +3,7 @@ package pl.jaqjacek.games.gameoflive
 	import org.puremvc.as3.interfaces.IFacade;
 	import org.puremvc.as3.patterns.facade.Facade;
 	import org.puremvc.as3.patterns.observer.Notification;
+	import pl.jaqjacek.games.gameoflive.controller.HelpCommand;
 	import pl.jaqjacek.games.gameoflive.controller.StartupCommand;
 	import pl.jaqjacek.games.gameoflive.controller.SwitchCommand;
 	import pl.jaqjacek.games.gameoflive.view.CycleView;
@@ -29,6 +30,8 @@ package pl.jaqjacek.games.gameoflive
             super.initializeController();
  
             registerCommand( STARTUP, StartupCommand );
+            registerCommand( Consts.PAUSE, HelpCommand );
+            registerCommand( Consts.RESUME, HelpCommand );
             registerCommand( CycleView.HIDE, SwitchCommand );
             registerCommand( MenuView.HIDE, SwitchCommand );
             registerCommand( IntroView.HIDE, SwitchCommand );

@@ -3,6 +3,7 @@ package pl.jaqjacek.games.gameoflive.view
 	import org.puremvc.as3.interfaces.IMediator;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	import pl.jaqjacek.games.gameoflive.Consts;
 	
 	/**
 	 * ...
@@ -26,7 +27,9 @@ package pl.jaqjacek.games.gameoflive.view
 			return [
 				CycleView.HIDE,
 				CycleView.SHOW,
-				CycleView.UPDATE
+				CycleView.UPDATE,
+				Consts.PAUSE,
+				Consts.RESUME
 			];
 		}
 		
@@ -38,6 +41,7 @@ package pl.jaqjacek.games.gameoflive.view
 			switch(name) { 
 				case CycleView.SHOW:
 					viewComponent.addChild(cycleView);
+					facade.re
 					cycleView.show();
 					cycleView.run();
 				break;
@@ -51,6 +55,12 @@ package pl.jaqjacek.games.gameoflive.view
 				
 				case CycleView.UPDATE:
 					cycleView.update();
+				break;
+				case Consts.PAUSE:
+					cycleView.pause();
+				break;
+				case Consts.RESUME:
+					cycleView.run();
 				break;
 			}
 		}

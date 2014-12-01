@@ -27,6 +27,7 @@ package pl.jaqjacek.games.gameoflive.controller
 			
 			switch(name) {
 				case CycleView.HIDE:
+					facade.retrieveMediator(MenuView.NAME)
 					facade.sendNotification(MenuView.SHOW);
 				break;
 				case CycleView.SHOW:
@@ -37,10 +38,6 @@ package pl.jaqjacek.games.gameoflive.controller
 				//break;
 				case IntroView.HIDE:
 					facade.sendNotification(MenuView.SHOW);
-				break;
-				case HelpView.HIDE:					
-				break;
-				case HelpView.SHOW:					
 				break;
 			}
 		}
