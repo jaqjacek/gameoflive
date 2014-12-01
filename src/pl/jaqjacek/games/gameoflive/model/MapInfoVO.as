@@ -9,7 +9,7 @@ package pl.jaqjacek.games.gameoflive.model
 		public var mapName:String;
 		public var mapData:String;
 		
-		public function MapInfoVO(p_mapName:String='',p_mapData:String='') 
+		public function MapInfoVO(p_mapData:String='',p_mapName:String='') 
 		{
 			mapName = p_mapName;
 			mapData = p_mapData;

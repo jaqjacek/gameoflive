@@ -9,13 +9,14 @@ package pl.jaqjacek.games.gameoflive.model
 	 */
 	public class MapProxy extends Proxy implements IProxy
 	{
+		public static const NAME:String = "mapProxy_";
 		private var _mapInfos:Vector.<MapInfoVO>;
 		private var _currentMapInfo:MapInfoVO;
 		
-		public function MapProxy(proxyName:String=null, data:Object=null) 
+		public function MapProxy() 
 		{
-			super(proxyName, data);
 			_mapInfos = new Vector.<MapInfoVO>();
+			super(NAME);
 		}
 		
 		public function getCurrentMapInfo():MapInfoVO
