@@ -41,7 +41,6 @@ package pl.jaqjacek.games.gameoflive.view
 			switch(name) { 
 				case CycleView.SHOW:
 					viewComponent.addChild(cycleView);
-					facade.re
 					cycleView.show();
 					cycleView.run();
 				break;
