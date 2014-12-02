@@ -147,7 +147,6 @@ package pl.jaqjacek.games.gol.map
 			{
 				itemz.nextGeneration()
 			}
-			trace('wywołowywanie');
 		}
 		
 		public function getCell(x:int,y:int):Cell 
