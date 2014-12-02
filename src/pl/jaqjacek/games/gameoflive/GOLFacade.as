@@ -15,16 +15,16 @@ package pl.jaqjacek.games.gameoflive
 	 * ...
 	 * @author jaq
 	 */
-	public class AppFacade extends Facade implements IFacade
+	public class GOLFacade extends Facade implements IFacade
 	{
 		
-		public static const NAME:String                         = 'AppFacade';
+		public static const NAME:String                         = 'GOLFacade';
  
         public static const STARTUP:String                      = NAME + 'StartUp';
  
-        public static function getInstance():AppFacade
+        public static function getInstance():GOLFacade
         {
-            return (instance ? instance : new AppFacade()) as AppFacade;
+            return (instance ? instance : new GOLFacade()) as GOLFacade;
         }
  
         override protected function initializeController():void

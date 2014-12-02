@@ -17,7 +17,7 @@ package pl.jaqjacek.games.gameoflive
 		
 		private function init():void 
 		{
-			AppFacade.getInstance().startup( this );
+			GOLFacade.getInstance().startup( this );
 		}
 		
 	}
