@@ -3,6 +3,7 @@ package pl.jaqjacek.games.gameoflive.view
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import pl.jaqjacek.games.gameoflive.Consts;
 	import pl.jaqjacek.games.gol.map.MiniMapButton;
 	/**
 	 * ...
@@ -33,21 +34,23 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		private function addButtonsToShowGrid():void 
 		{
-			var startX:Number = 50;
-			var tmpX:Number = startX;
+			var tmpX:Number = 0;
 			var tmpY:Number = 0;
-			var maxWidth:Number = 350;
+			var separatorY:int = 10;
+			var separatorX:int = 10;
+			var maxWidth:Number = Consts.STAGE_WIDTH;
 			for each (var item:MiniMapButton in _buttons) 
 			{
 				item.container.x = tmpX;
 				item.container.y = tmpY;
-				tmpX += item.container.width + 10;
-				if (tmpX > maxWidth) {
-					tmpY += item.container.height + 10;
-					tmpX = startX;
+				tmpX += item.container.width + separatorX;
+				if (tmpX + item.container.width > maxWidth) {
+					tmpY += item.container.height + separatorY;
+					tmpX = 0
 				}
 				addChild(item.container);
 			}
+			this.x = (maxWidth - this.width) / 2;
 		}
 		
 		private function initButtonsEvents():void 
