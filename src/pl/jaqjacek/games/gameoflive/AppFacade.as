@@ -4,8 +4,10 @@ package pl.jaqjacek.games.gameoflive
 	import org.puremvc.as3.patterns.facade.Facade;
 	import org.puremvc.as3.patterns.observer.Notification;
 	import pl.jaqjacek.games.gameoflive.controller.HelpCommand;
+	import pl.jaqjacek.games.gameoflive.controller.SetCurrentMapInfoCommand;
 	import pl.jaqjacek.games.gameoflive.controller.StartupCommand;
 	import pl.jaqjacek.games.gameoflive.controller.SwitchCommand;
+	import pl.jaqjacek.games.gameoflive.model.MapProxy;
 	import pl.jaqjacek.games.gameoflive.view.CycleView;
 	import pl.jaqjacek.games.gameoflive.view.IntroView;
 	import pl.jaqjacek.games.gameoflive.view.MenuView;
@@ -30,6 +32,7 @@ package pl.jaqjacek.games.gameoflive
             super.initializeController();
  
             registerCommand( STARTUP, StartupCommand );
+            registerCommand( MapProxy.SET_CURRENT_MAPINFO, SetCurrentMapInfoCommand );
             registerCommand( Consts.PAUSE, HelpCommand );
             registerCommand( Consts.RESUME, HelpCommand );
             registerCommand( CycleView.HIDE, SwitchCommand );
