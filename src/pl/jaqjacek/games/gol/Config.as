@@ -8,8 +8,8 @@ package pl.jaqjacek.games.gol
 	{
 		static public const MAP_WIDTH:int 			= 50;
 		static public const MAP_HEIGHT:int 			= 50;
-		static public const MINIMAP_HEIGHT:int 		= 10;
-		static public const MINIMAP_WIDTH:int 		= 10;
+		static public const MINIMAP_HEIGHT:int 		= 15;
+		static public const MINIMAP_WIDTH:int 		= 15;
 		static public const CELL_WIDTH:int 			= 12;
 		static public const CELL_HEIGHT:int 		= 12;
 		static public const CELL_BORDER_WIDTH:int 	= 1;
