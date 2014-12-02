@@ -25,16 +25,19 @@ package pl.jaqjacek.games.gameoflive.model
 		
 		public function getCurrentMapInfo():MapInfoVO
 		{
-			if (!_currentMapInfoIndex < _mapInfos.length) {
+			if (_currentMapInfoIndex > _mapInfos.length) {
 				_currentMapInfoIndex = 0;
 			}
+			
 			return _mapInfos[_currentMapInfoIndex];
 		}
 		
 		public function setCurrentMapInfoByName(patternName:String):void 
 		{
 			if (patternName == 'random') {
+				_currentMapInfoIndex = 0;
 				initRandomPattern();
+				return;
 			}
 			for each (var item:MapInfoVO in _mapInfos) 
 			{

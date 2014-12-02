@@ -4,6 +4,7 @@ package pl.jaqjacek.games.gameoflive.view
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import pl.jaqjacek.games.gameoflive.Consts;
+	import pl.jaqjacek.games.gameoflive.model.MapInfoVO;
 	import pl.jaqjacek.games.gameoflive.model.MapProxy;
 	
 	/**
@@ -62,8 +63,9 @@ package pl.jaqjacek.games.gameoflive.view
 		private function setMapToCurrentMapInfo():void 
 		{
 			var mapProxy:MapProxy = facade.retrieveProxy(MapProxy.NAME) as MapProxy;
-			if(mapProxy.getCurrentMapInfo()) {
-				_cycleView.initMap(mapProxy.getCurrentMapInfo().mapData, mapProxy.getCurrentMapInfo().mapName);
+			var tmpMapVO:MapInfoVO = mapProxy.getCurrentMapInfo();
+			if(tmpMapVO) {
+				_cycleView.initMap(tmpMapVO.mapData, tmpMapVO.mapName);
 			}
 		}
 		
