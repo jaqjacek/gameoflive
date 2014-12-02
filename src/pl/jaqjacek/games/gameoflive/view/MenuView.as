@@ -43,6 +43,8 @@ package pl.jaqjacek.games.gameoflive.view
 			{
 				item.container.x = tmpX;
 				item.container.y = tmpY;
+				item.container.width = 130;
+				item.container.scaleY = item.container.scaleX
 				tmpX += item.container.width + separatorX;
 				if (tmpX + item.container.width > maxWidth) {
 					tmpY += item.container.height + separatorY;
