@@ -4,6 +4,8 @@ package pl.jaqjacek.games.gameoflive.view
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import pl.jaqjacek.games.gameoflive.Consts;
+	import pl.jaqjacek.games.gameoflive.model.MapProxy;
+	import pl.jaqjacek.games.gol.map.indicators.ResetIniciator;
 	
 	/**
 	 * ...
@@ -41,11 +43,11 @@ package pl.jaqjacek.games.gameoflive.view
 			switch(name) { 
 				case CycleView.SHOW:
 					viewComponent.addChild(cycleView);
+					setMapToCurrentMapInfo();
 					cycleView.show();
 					cycleView.run();
 				break;
 			case CycleView.HIDE:
-					trace("handle Nottificaton CycleMediator");		
 					cycleView.stop();
 					cycleView.hide()
 					
@@ -53,7 +55,7 @@ package pl.jaqjacek.games.gameoflive.view
 				break;
 				
 				case CycleView.UPDATE:
-					cycleView.update();
+					//cycleView.update();
 				break;
 				case Consts.PAUSE:
 					cycleView.pause();
@@ -62,6 +64,13 @@ package pl.jaqjacek.games.gameoflive.view
 					cycleView.run();
 				break;
 			}
+		}
+		
+		private function setMapToCurrentMapInfo():void 
+		{
+			var mapProxy:MapProxy = facade.retrieveProxy(MapProxy.NAME) as MapProxy;
+			if(mapProxy.getCurrentMapInfo())
+				cycleView.initMap(mapProxy.getCurrentMapInfo().mapData, mapProxy.getCurrentMapInfo().mapName);
 		}
 		
 		override public function onRegister():void 
@@ -73,7 +82,6 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		private function exitFromView(...rest):void 
 		{			
-			trace("cycle mediator exit from view");
 			facade.sendNotification(CycleView.HIDE);
 		}
 	}

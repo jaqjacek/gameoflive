@@ -10,6 +10,7 @@ package pl.jaqjacek.games.gameoflive.view
 	import org.osflash.signals.Signal;
 	import pl.jaqjacek.games.gol.map.indicators.RandomMapIniciator;
 	import pl.jaqjacek.games.gol.map.indicators.ResetIniciator;
+	import pl.jaqjacek.games.gol.map.indicators.StaticMapIniciator;
 	import pl.jaqjacek.games.gol.map.Map;
 	/**
 	 * ...
@@ -55,10 +56,25 @@ package pl.jaqjacek.games.gameoflive.view
 			if(!onExit)
 				onExit = new Signal();
 			
-			_map = new Map(20,20);
+			_map = new Map(25,25);
+			addChild(_map.container);
+			_map.container.visible = true;
+			//_map.reset();
+		}
+		
+		public function initMap(mapData:String,mapName:String):void 
+		{
+			trace("map data", mapData,mapName);
+			if (_map) {
+				if(_map.container.parent)
+					removeChild(_map.container);
+			}
+			_map = new Map(25,25);
 			addChild(_map.container);
 			_map.container.visible = true;
 			_map.reset();
+			_map.mapIniciator = new StaticMapIniciator(mapData, mapName);
+			_map.mapIniciator.inicializeMap(_map);
 		}
 		
 		public function run():void 
@@ -96,7 +112,7 @@ package pl.jaqjacek.games.gameoflive.view
 		public function show():void 
 		{
 			this.visible = true;
-			reset();
+			//reset();
 		}
 		
 		public function reset():void 
