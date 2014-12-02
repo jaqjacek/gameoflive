@@ -8,6 +8,7 @@ package pl.jaqjacek.games.gameoflive.view
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	import org.osflash.signals.Signal;
+	import pl.jaqjacek.games.gameoflive.Consts;
 	import pl.jaqjacek.games.gol.map.indicators.RandomMapIniciator;
 	import pl.jaqjacek.games.gol.map.indicators.ResetIniciator;
 	import pl.jaqjacek.games.gol.map.indicators.StaticMapIniciator;
@@ -46,7 +47,7 @@ package pl.jaqjacek.games.gameoflive.view
 					removeChild(_map.container);
 				}
 			}
-			_map = new Map(50,50);
+			_map = new Map(40,40);
 			addChild(_map.container);
 			_map.container.visible = true;
 			_map.reset();
@@ -57,7 +58,7 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		private function centerMap():void 
 		{
-			_map.container.width = _map.container.stage.stageWidth;
+			_map.container.width = Consts.STAGE_WIDTH
 			_map.container.scaleY = _map.container.scaleX;
 			_map.container.y =  _map.container.height / 4;
 		}

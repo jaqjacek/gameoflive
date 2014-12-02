@@ -20,6 +20,7 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		public function IntroView()
 		{
+			init();
 		}
 		
 		public function init():void
@@ -31,8 +32,8 @@ package pl.jaqjacek.games.gameoflive.view
 			_text.text = ">&";		
 			_text.setTextFormat(tmpTextFormat);
 			addChild(_text);
-			_text.x = _text.stage.stageWidth / 2 - _text.textWidth / 2;
-			_text.y = _text.stage.stageHeight / 2 - _text.textHeight / 2;
+			_text.x = Consts.STAGE_WIDTH / 2  - _text.textWidth / 2;
+			_text.y = Consts.STAGE_HEIGHT / 2 - _text.textHeight / 2;
 		}
 		
 		public function show():void
