@@ -20,7 +20,7 @@ package pl.jaqjacek.games.gameoflive.controller
 		
 		override public function execute(notification:INotification):void 
 		{
-			var mapProxy:MapProxy = new MapProxy(null);
+			var mapProxy:MapProxy = new MapProxy();
 			facade.registerProxy(mapProxy);
 			mapProxy.addMapInfo(new MapInfoVO('01011|01101','snake'));
 			mapProxy.addMapInfo(new MapInfoVO('11|101|011','ship'));

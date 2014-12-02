@@ -13,6 +13,8 @@ package pl.jaqjacek.games.gameoflive.model
 		private var _mapInfos:Vector.<MapInfoVO>;
 		private var _currentMapInfo:MapInfoVO;
 		
+		static public const SET_CURRENT_MAPINFO:String = NAME+"setCurrentMapinfo";
+		
 		public function MapProxy() 
 		{
 			_mapInfos = new Vector.<MapInfoVO>();
@@ -22,6 +24,17 @@ package pl.jaqjacek.games.gameoflive.model
 		public function getCurrentMapInfo():MapInfoVO
 		{
 			return _currentMapInfo
+		}
+		
+		public function setCurrentMapInfoByName(patternName:String):void 
+		{
+			for each (var item:MapInfoVO in _mapInfos) 
+			{
+				if (item.mapName == patternName) {
+					_currentMapInfo = item;
+					return;
+				}
+			}
 		}
 		
 		public function addMapInfo(p_mapInfo:MapInfoVO):void 
