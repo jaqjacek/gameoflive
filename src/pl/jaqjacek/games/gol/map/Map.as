@@ -167,7 +167,23 @@ package pl.jaqjacek.games.gol.map
 		public function set mapIniciator(value:MapIniciator):void 
 		{
 			_mapIniciator = value;
-		}		
+		}
+		
+		public function getMapString():String 
+		{
+			var resultString:String = '';
+			for (var j:int = 0; j < _mapHeight; j++) 
+			{
+				for (var i:int = 0; i < _mapWidth; i++) 
+				{
+					resultString += _map[i][j].isAlive ? '1' : '0';
+				}
+				resultString += "|";
+			}			
+			//remove last |
+			resultString = resultString.substr(0, resultString.length - 2);
+			return resultString;
+		}
 	}
 
 }
