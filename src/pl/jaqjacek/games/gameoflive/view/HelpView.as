@@ -9,7 +9,7 @@ package pl.jaqjacek.games.gameoflive.view
 	 */
 	public class HelpView extends Sprite
 	{
-		static public const NAME:String = "helpView";
+		static public const NAME:String = "HelpView_";
 		static public const SHOW:String = NAME + "show";
 		static public const HIDE:String = NAME + "hide";
 		static public const UPDATE:String = NAME + "update";
@@ -55,7 +55,5 @@ package pl.jaqjacek.games.gameoflive.view
 		{
 			
 		}
-		
 	}
-
 }

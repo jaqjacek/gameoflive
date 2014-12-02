@@ -4,7 +4,6 @@ package pl.jaqjacek.games.gameoflive.controller
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	import pl.jaqjacek.games.gameoflive.view.CycleView;
-	import pl.jaqjacek.games.gameoflive.view.HelpView;
 	import pl.jaqjacek.games.gameoflive.view.IntroView;
 	import pl.jaqjacek.games.gameoflive.view.MenuView;
 	
@@ -32,16 +31,11 @@ package pl.jaqjacek.games.gameoflive.controller
 				break;
 				case CycleView.SHOW:
 					facade.sendNotification(MenuView.HIDE);
-				break;
-				//case MenuView.HIDE:
-					//facade.sendNotification(MenuView.HIDE);
 				//break;
 				case IntroView.HIDE:
 					facade.sendNotification(MenuView.SHOW);
 				break;
 			}
 		}
-		
 	}
-
 }

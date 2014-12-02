@@ -10,7 +10,7 @@ package pl.jaqjacek.games.gameoflive.view
 	 */
 	public class IntroMediator extends Mediator 
 	{
-		static public const NAME:String = "introMediator";
+		static public const NAME:String = "IntroMediator_";
 		private var _introView:IntroView;
 		private var _startTime:Number;
 		
@@ -47,10 +47,8 @@ package pl.jaqjacek.games.gameoflive.view
 				break;
 				case  IntroView.HIDE:					
 					viewComponent.removeChild(_introView);
-					_introView.hide()
-					
+					_introView.hide();
 				break;
-				
 				case IntroView.END:
 					endIntroTimeout();
 				break;
@@ -76,7 +74,5 @@ package pl.jaqjacek.games.gameoflive.view
 			_introView.stage.removeEventListener(Event.ENTER_FRAME, checkIntroTimeoutHandler);
 			facade.sendNotification(IntroView.HIDE);
 		}
-		
 	}
-
 }

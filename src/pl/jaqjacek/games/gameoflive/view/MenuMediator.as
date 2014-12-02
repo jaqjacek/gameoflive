@@ -16,22 +16,19 @@ package pl.jaqjacek.games.gameoflive.view
 	 */
 	public class MenuMediator extends Mediator implements IMediator
 	{
-		private static const NAME:String = "menuMediator";
-		private var menuView:MenuView;
+		private static const NAME:String = "MenuMediator_";
+		private var _menuView:MenuView;
 		
 		public function MenuMediator(viewComponent:Object=null) 
 		{
 			super(NAME, viewComponent);
-			
 		}
 		
 		override public function onRegister():void 
 		{
 			var mapProxy:MapProxy = facade.retrieveProxy(MapProxy.NAME) as MapProxy;
-			menuView = new MenuView();
-			
-			menuView.init(getMiniButtonsList());
-			
+			_menuView = new MenuView();
+			_menuView.init(getMiniButtonsList());
 		}
 		
 		private function getMiniButtonsList():Vector.<MiniMapButton>
@@ -76,25 +73,25 @@ package pl.jaqjacek.games.gameoflive.view
 			switch (name) 
 			{
 				case MenuView.UPDATE:
-					menuView.update();
+					_menuView.update();
 				break;
 				case MenuView.SHOW:
-					viewComponent.addChild(menuView);
-					menuView.show();
-					menuView.addEventListener(MenuView.BUTTON_CLICKED, menuButtonPressedHandler);
+					viewComponent.addChild(_menuView);
+					_menuView.show();
+					_menuView.addEventListener(MenuView.BUTTON_CLICKED, menuButtonPressedHandler);
 				break;
 				case MenuView.HIDE:
-					menuView.hide();
-					if (menuView.parent) {
-						menuView.parent.removeChild(menuView);
+					_menuView.hide();
+					if (_menuView.parent) {
+						_menuView.parent.removeChild(_menuView);
 					}
-					menuView.removeEventListener(MenuView.BUTTON_CLICKED, menuButtonPressedHandler);
+					_menuView.removeEventListener(MenuView.BUTTON_CLICKED, menuButtonPressedHandler);
 				break;
 				case HelpView.SHOW:
-					menuView.visible = false;
+					_menuView.visible = false;
 				break;
 				case HelpView.HIDE:
-					menuView.visible = true;;
+					_menuView.visible = true;;
 				break;
 				default:
 			}
@@ -102,11 +99,9 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		private function menuButtonPressedHandler(e:Event):void 
 		{
-			facade.sendNotification(MapProxy.SET_CURRENT_MAPINFO, menuView.lastButtonClicked.mapIniciator.getPatternName());
+			facade.sendNotification(MapProxy.SET_CURRENT_MAPINFO, _menuView.lastButtonClicked.mapIniciator.getPatternName());
 			facade.sendNotification(CycleView.SHOW);
 			facade.sendNotification(MenuView.HIDE);
 		}
-		
 	}
-
 }

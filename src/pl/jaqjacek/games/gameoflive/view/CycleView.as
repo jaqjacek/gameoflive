@@ -53,21 +53,20 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		private function init():void 
 		{
-			if(!onExit)
+			if(!onExit) {
 				onExit = new Signal();
-			
+			}
 			_map = new Map(25,25);
 			addChild(_map.container);
 			_map.container.visible = true;
-			//_map.reset();
 		}
 		
 		public function initMap(mapData:String,mapName:String):void 
 		{
-			trace("map data", mapData,mapName);
 			if (_map) {
-				if(_map.container.parent)
+				if(_map.container.parent) {
 					removeChild(_map.container);
+				}
 			}
 			_map = new Map(25,25);
 			addChild(_map.container);
@@ -112,7 +111,6 @@ package pl.jaqjacek.games.gameoflive.view
 		public function show():void 
 		{
 			this.visible = true;
-			//reset();
 		}
 		
 		public function reset():void 
@@ -130,7 +128,5 @@ package pl.jaqjacek.games.gameoflive.view
 		{
 			_map.update();
 		}
-		
 	}
-
 }

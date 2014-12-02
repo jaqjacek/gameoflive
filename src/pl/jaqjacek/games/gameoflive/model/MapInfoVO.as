@@ -2,7 +2,7 @@ package pl.jaqjacek.games.gameoflive.model
 {
 	/**
 	 * ...
-	 * @author 
+	 * @author jaq
 	 */
 	public class MapInfoVO 
 	{
@@ -14,7 +14,5 @@ package pl.jaqjacek.games.gameoflive.model
 			mapName = p_mapName;
 			mapData = p_mapData;
 		}
-		
 	}
-
 }

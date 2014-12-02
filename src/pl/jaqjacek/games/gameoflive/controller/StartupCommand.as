@@ -17,8 +17,6 @@ package pl.jaqjacek.games.gameoflive.controller {
 		{
 			addSubCommand(LoadMapInfoCommand);
 			addSubCommand(InitFirstIntroCommand);
-			//facade.sendNotification(MenuView.SHOW);
 		}
 	}
-
 }

@@ -10,7 +10,7 @@ package pl.jaqjacek.games.gameoflive.view
 	public class IntroView extends Sprite
 	{
 		private var _text:TextField;
-		static public const NAME:String = "introView";
+		static public const NAME:String = "IntroView_";
 		static public const END:String = NAME + "end";
 		static public const SHOW:String = NAME + "show";
 		static public const HIDE:String = NAME + "hide";
@@ -36,7 +36,5 @@ package pl.jaqjacek.games.gameoflive.view
 		{
 			_text.visible = false;
 		}
-	
 	}
-
 }

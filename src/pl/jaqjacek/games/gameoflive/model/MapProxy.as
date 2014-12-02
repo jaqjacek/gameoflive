@@ -5,11 +5,11 @@ package pl.jaqjacek.games.gameoflive.model
 	
 	/**
 	 * ...
-	 * @author 
+	 * @author jaq
 	 */
 	public class MapProxy extends Proxy implements IProxy
 	{
-		public static const NAME:String = "mapProxy_";
+		public static const NAME:String = "MapProxy_";
 		private var _mapInfos:Vector.<MapInfoVO>;
 		private var _currentMapInfo:MapInfoVO;
 		
@@ -46,7 +46,5 @@ package pl.jaqjacek.games.gameoflive.model
 		{
 			return _mapInfos;
 		}
-		
 	}
-
 }

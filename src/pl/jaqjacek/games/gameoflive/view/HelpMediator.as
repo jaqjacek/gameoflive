@@ -8,12 +8,12 @@ package pl.jaqjacek.games.gameoflive.view
 	
 	/**
 	 * ...
-	 * @author ...
+	 * @author jaq
 	 */
 	public class HelpMediator extends Mediator
 	{
 		
-		public static const NAME:String = "helpMediator";
+		public static const NAME:String = "HelpMediator_";
 		private var helpView:HelpView;
 		
 		public function HelpMediator(viewComponent:Object = null)
@@ -35,7 +35,7 @@ package pl.jaqjacek.games.gameoflive.view
 				case Keyboard.H: 
 					var notificationToSend:String = helpView.parent ? HelpView.HIDE : HelpView.SHOW;
 					facade.sendNotification(notificationToSend);
-					break;
+				break;
 			}
 		}
 		
@@ -46,20 +46,19 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		public function show():void 
 		{
-				viewComponent.addChild(helpView);
-				helpView.show();
+			viewComponent.addChild(helpView);
+			helpView.show();
 		}
 		
 		public function hide():void 
 		{
-				helpView.hide();
-				if (helpView.parent)
-				{
-					helpView.parent.removeChild(helpView);
-				}
+			helpView.hide();
+			if (helpView.parent) {
+				helpView.parent.removeChild(helpView);
+			}
 		}
 			
-			override public function handleNotification(notification:INotification):void
+		override public function handleNotification(notification:INotification):void
 		{
 			var name:String = notification.getName();
 			var body:Object = notification.getBody();
@@ -70,15 +69,11 @@ package pl.jaqjacek.games.gameoflive.view
 					helpView.update();
 					break;
 				case HelpView.SHOW: 
-				
-					break;
+				break;
 				case HelpView.HIDE: 
-				
-					break;
+				break;
 				default: 
 			}
 		}
-	
 	}
-
 }

@@ -3,8 +3,6 @@ package pl.jaqjacek.games.gameoflive.view
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.text.TextField
-	import pl.jaqjacek.games.gol.map.indicators.RandomMapIniciator;
 	import pl.jaqjacek.games.gol.map.MiniMapButton;
 	/**
 	 * ...
@@ -12,13 +10,12 @@ package pl.jaqjacek.games.gameoflive.view
 	 */
 	public class MenuView extends Sprite
 	{
-		static public const NAME:String = "MenuView";
+		static public const NAME:String = "MenuView_";
 		static public const SHOW:String = NAME + "show";
 		static public const HIDE:String = NAME + "hide";
 		static public const UPDATE:String = NAME + "update";
 		static public const BUTTON_CLICKED:String = NAME + "buttonClicked";
 		
-		private var _text:TextField;		
 		private var _buttons:Vector.<MiniMapButton>;
 		public var lastButtonClicked:MiniMapButton;
 		
@@ -29,9 +26,6 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		public function init(buttonsList:Vector.<MiniMapButton>):void 
 		{
-			_text = new TextField();
-			_text.text = "menuView";			
-			addChild(_text);
 			hide();
 			_buttons = buttonsList;
 			addButtonsToShowGrid();	
@@ -88,21 +82,16 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		public function show():void 
 		{
-			_text.visible = true;
 			initButtonsEvents();
 		}
 		
 		public function hide():void 
 		{
 			removeButtonsEvents();
-			_text.visible = false;
 		}
 		
 		public function update():void 
-		{
-			_text.appendText(".");
+		{			
 		}
-		
 	}
-
 }

@@ -9,7 +9,7 @@ package pl.jaqjacek.games.gameoflive.controller
 	
 	/**
 	 * ...
-	 * @author ...
+	 * @author jaq
 	 */
 	public class InitFirstIntroCommand extends SimpleCommand implements ICommand
 	{
@@ -24,8 +24,6 @@ package pl.jaqjacek.games.gameoflive.controller
 			facade.registerMediator(new AppMediator(notification.getBody() as Main));			
 			facade.sendNotification(IntroView.SHOW);
 		}
-		
-		
 	}
 
 }

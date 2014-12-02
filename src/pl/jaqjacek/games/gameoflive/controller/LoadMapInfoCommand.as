@@ -8,7 +8,7 @@ package pl.jaqjacek.games.gameoflive.controller
 	
 	/**
 	 * ...
-	 * @author 
+	 * @author jaq
 	 */
 	public class LoadMapInfoCommand extends SimpleCommand implements ICommand
 	{
@@ -22,6 +22,7 @@ package pl.jaqjacek.games.gameoflive.controller
 		{
 			var mapProxy:MapProxy = new MapProxy();
 			facade.registerProxy(mapProxy);
+			
 			mapProxy.addMapInfo(new MapInfoVO('01011|01101','snake'));
 			mapProxy.addMapInfo(new MapInfoVO('11|101|011','ship'));
 			mapProxy.addMapInfo(new MapInfoVO('11|1001|0011','aircraft carrier'));
@@ -33,9 +34,7 @@ package pl.jaqjacek.games.gameoflive.controller
 			mapProxy.addMapInfo(new MapInfoVO('01|101|0101|0011','long boat'));
 			mapProxy.addMapInfo(new MapInfoVO('11|101|001|0011','fisherhook'));
 			mapProxy.addMapInfo(new MapInfoVO('01011|01101','snake'));
-			mapProxy.addMapInfo(new MapInfoVO('11101|1|00011|01101|10101'));
+			mapProxy.addMapInfo(new MapInfoVO('11101|1|00011|01101|10101','random1'));
 		}
-		
 	}
-
 }

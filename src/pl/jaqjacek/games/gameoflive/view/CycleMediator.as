@@ -5,7 +5,6 @@ package pl.jaqjacek.games.gameoflive.view
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import pl.jaqjacek.games.gameoflive.Consts;
 	import pl.jaqjacek.games.gameoflive.model.MapProxy;
-	import pl.jaqjacek.games.gol.map.indicators.ResetIniciator;
 	
 	/**
 	 * ...
@@ -13,16 +12,13 @@ package pl.jaqjacek.games.gameoflive.view
 	 */
 	public class CycleMediator extends Mediator implements IMediator 
 	{
-		public static const NAME:String = "cycleMediator";
-		private var cycleView:CycleView;
+		public static const NAME:String = "CycleMediator_";
+		private var _cycleView:CycleView;
 		
 		public function CycleMediator(viewComponent:Object=null) 
 		{
 			super(NAME, viewComponent);
 		}
-		
-		/* INTERFACE org.puremvc.as3.interfaces.IMediator */
-	
 		
 		override public function listNotificationInterests():Array 
 		{
@@ -42,26 +38,23 @@ package pl.jaqjacek.games.gameoflive.view
 			
 			switch(name) { 
 				case CycleView.SHOW:
-					viewComponent.addChild(cycleView);
+					viewComponent.addChild(_cycleView);
 					setMapToCurrentMapInfo();
-					cycleView.show();
-					cycleView.run();
+					_cycleView.show();
+					_cycleView.run();
 				break;
-			case CycleView.HIDE:
-					cycleView.stop();
-					cycleView.hide()
-					
-					viewComponent.removeChild(cycleView);
+				case CycleView.HIDE:
+					_cycleView.stop();
+					_cycleView.hide();
+					viewComponent.removeChild(_cycleView);
 				break;
-				
 				case CycleView.UPDATE:
-					//cycleView.update();
 				break;
 				case Consts.PAUSE:
-					cycleView.pause();
+					_cycleView.pause();
 				break;
 				case Consts.RESUME:
-					cycleView.run();
+					_cycleView.run();
 				break;
 			}
 		}
@@ -69,15 +62,15 @@ package pl.jaqjacek.games.gameoflive.view
 		private function setMapToCurrentMapInfo():void 
 		{
 			var mapProxy:MapProxy = facade.retrieveProxy(MapProxy.NAME) as MapProxy;
-			if(mapProxy.getCurrentMapInfo())
-				cycleView.initMap(mapProxy.getCurrentMapInfo().mapData, mapProxy.getCurrentMapInfo().mapName);
+			if(mapProxy.getCurrentMapInfo()) {
+				_cycleView.initMap(mapProxy.getCurrentMapInfo().mapData, mapProxy.getCurrentMapInfo().mapName);
+			}
 		}
 		
 		override public function onRegister():void 
 		{
-			cycleView = new CycleView();
-			cycleView.onExit.add(exitFromView);
-			
+			_cycleView = new CycleView();
+			_cycleView.onExit.add(exitFromView);
 		}
 		
 		private function exitFromView(...rest):void 
@@ -85,5 +78,4 @@ package pl.jaqjacek.games.gameoflive.view
 			facade.sendNotification(CycleView.HIDE);
 		}
 	}
-
 }
