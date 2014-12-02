@@ -1,7 +1,10 @@
 package pl.jaqjacek.games.gameoflive.view
 {
 	import flash.display.Sprite;
+	import flash.text.AntiAliasType;
 	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import pl.jaqjacek.games.gameoflive.Consts;
 	
 	/**
 	 * ...
@@ -17,14 +20,19 @@ package pl.jaqjacek.games.gameoflive.view
 		
 		public function IntroView()
 		{
-			init();
 		}
 		
 		public function init():void
 		{
 			_text = new TextField();
-			_text.text = ">&";
+			var tmpTextFormat:TextFormat = _text.getTextFormat();
+			tmpTextFormat.size = 72;
+			_text.antiAliasType = AntiAliasType.ADVANCED;
+			_text.text = ">&";		
+			_text.setTextFormat(tmpTextFormat);
 			addChild(_text);
+			_text.x = _text.stage.stageWidth / 2 - _text.textWidth / 2;
+			_text.y = _text.stage.stageHeight / 2 - _text.textHeight / 2;
 		}
 		
 		public function show():void

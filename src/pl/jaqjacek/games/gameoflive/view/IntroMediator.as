@@ -42,6 +42,7 @@ package pl.jaqjacek.games.gameoflive.view
 			switch(name) { 
 				case IntroView.SHOW:
 					viewComponent.addChild(_introView);
+					_introView.init();
 					_introView.show();
 					startIntroTimeout();
 				break;
