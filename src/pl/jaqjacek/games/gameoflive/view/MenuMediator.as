@@ -45,12 +45,6 @@ package pl.jaqjacek.games.gameoflive.view
 				tmpButton.initMinimapName();
 				tmpVector.push(tmpButton);
 			}
-			// add random button at first place
-			tmpButton = new MiniMapButton();
-			tmpButton.mapIniciator = new RandomMapIniciator();
-			tmpButton.mapIniciator.inicializeMap(tmpButton);
-			tmpButton.initMinimapName();
-			tmpVector.unshift(tmpButton);
 			return tmpVector;
 		}
 		

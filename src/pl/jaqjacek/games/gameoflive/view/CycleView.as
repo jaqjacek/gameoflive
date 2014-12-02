@@ -32,33 +32,11 @@ package pl.jaqjacek.games.gameoflive.view
 			init();
 		}
 		
-		private function initOld():void 
-		{
-			var tmpBitmap:BitmapData = new BitmapData(400, 300, true, 0xFFFF11);
-			var tmpShape:Shape = new Shape();
-			tmpShape.graphics.lineStyle(1, 0x000000);
-			var mapWidth:int = 10;
-			for (var i:int = 0; i < 400; i+=mapWidth) 
-			{
-				tmpShape.graphics.moveTo(0, i)
-				tmpShape.graphics.lineTo(400, i);
-				tmpShape.graphics.moveTo(i, 0)
-				tmpShape.graphics.lineTo(i,400);
-			}
-			tmpBitmap.draw(tmpShape);
-			addChild(new Bitmap(tmpBitmap));
-			
-			onExit = new Signal();
-		}
-		
 		private function init():void 
 		{
 			if(!onExit) {
 				onExit = new Signal();
 			}
-			_map = new Map(25,25);
-			addChild(_map.container);
-			_map.container.visible = true;
 		}
 		
 		public function initMap(mapData:String,mapName:String):void 
@@ -68,12 +46,20 @@ package pl.jaqjacek.games.gameoflive.view
 					removeChild(_map.container);
 				}
 			}
-			_map = new Map(25,25);
+			_map = new Map(50,50);
 			addChild(_map.container);
 			_map.container.visible = true;
 			_map.reset();
 			_map.mapIniciator = new StaticMapIniciator(mapData, mapName);
 			_map.mapIniciator.inicializeMap(_map);
+			centerMap();
+		}
+		
+		private function centerMap():void 
+		{
+			_map.container.width = _map.container.stage.stageWidth;
+			_map.container.scaleY = _map.container.scaleX;
+			_map.container.y =  _map.container.height / 4;
 		}
 		
 		public function run():void 
