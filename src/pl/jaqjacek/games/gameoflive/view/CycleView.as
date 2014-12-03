@@ -1,10 +1,6 @@
 package pl.jaqjacek.games.gameoflive.view 
 {
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
-	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	import org.osflash.signals.Signal;
@@ -61,38 +57,6 @@ package pl.jaqjacek.games.gameoflive.view
 			_map.container.width = Consts.STAGE_WIDTH
 			_map.container.scaleY = _map.container.scaleX;
 			_map.container.y =  _map.container.height / 4;
-		}
-		
-		public function run():void 
-		{
-			stop();
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDownHandler);
-			stage.addEventListener(Event.ENTER_FRAME, enterFrameHandler);
-		}
-		
-		public function stop():void 
-		{
-			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDownHandler);
-			stage.removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
-		}
-		
-		public function pause():void 
-		{
-			stage.removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
-		}
-		
-		private function enterFrameHandler(e:Event):void 
-		{
-			this.update();
-		}
-		
-		private function onKeyDownHandler(e:KeyboardEvent):void 
-		{
-			switch(e.keyCode) {
-				case Keyboard.ENTER:
-					onExit.dispatch();
-				break;
-			}
 		}
 		
 		public function show():void 

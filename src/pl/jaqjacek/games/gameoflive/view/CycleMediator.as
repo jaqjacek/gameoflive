@@ -1,5 +1,8 @@
 package pl.jaqjacek.games.gameoflive.view 
 {
+	import flash.events.Event;
+	import flash.events.KeyboardEvent;
+	import flash.ui.Keyboard;
 	import org.puremvc.as3.interfaces.IMediator;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
@@ -42,22 +45,54 @@ package pl.jaqjacek.games.gameoflive.view
 					viewComponent.addChild(_cycleView);
 					setMapToCurrentMapInfo();
 					_cycleView.show();
-					_cycleView.run();
+					run();
 				break;
 				case CycleView.HIDE:
-					_cycleView.stop();
+					stop();
 					_cycleView.hide();
 					viewComponent.removeChild(_cycleView);
 				break;
 				case CycleView.UPDATE:
 				break;
 				case Consts.PAUSE:
-					_cycleView.pause();
+					pause();
 				break;
 				case Consts.RESUME:
-					_cycleView.run();
+					run();
 				break;
 			}
+		}
+		
+		public function run():void 
+		{
+			stop();
+			_cycleView.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDownHandler);
+			_cycleView.addEventListener(Event.ENTER_FRAME, enterFrameHandler);
+		}
+		
+		public function stop():void 
+		{
+			_cycleView.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDownHandler);
+			_cycleView.removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+		}
+		
+		public function pause():void 
+		{
+			_cycleView.removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
+		}
+		
+		private function onKeyDownHandler(e:KeyboardEvent):void 
+		{
+			switch(e.keyCode) {
+				case Keyboard.ENTER:
+					_cycleView.onExit.dispatch();
+				break;
+			}
+		}
+		
+		private function enterFrameHandler(e:Event):void 
+		{
+			_cycleView.update();
 		}
 		
 		private function setMapToCurrentMapInfo():void 
