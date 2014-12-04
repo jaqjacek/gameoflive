@@ -4,7 +4,7 @@ gameoflive
 Game Of Live implementation in puremvc.  
   
 For HOWTO about Game Of Live check wikipedia.  
-This is an implementation in as3 AIR/Flash implementation with use of puremvc framework.  
+This is an implementation in as3 AIR/Flash. Code use puremvc framework.  
 Needs:  
    puremvc as3 code or swc  
    AS3Signals as3 code or swc  
