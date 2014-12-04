@@ -9,10 +9,10 @@ package pl.jaqjacek.games.gol.map
 	 */
 	public class Cell extends Sprite 
 	{
-		protected var _neighbours:Vector.<Cell>;
-		protected var _alive:Boolean;
-		protected var _toggleState:Boolean;
-		protected var _blocked:Boolean;
+		protected var _neighbours:Vector.<Cell>; // all cell that are neighbours for that one
+		protected var _alive:Boolean; //current state of cell
+		protected var _toggleState:Boolean; // if cell in next generation should change state
+		protected var _blocked:Boolean; //if cell was checked  as a neighbours of other cell and should by skip in in futher check
 		
 		public function Cell() 
 		{
@@ -44,6 +44,10 @@ package pl.jaqjacek.games.gol.map
 			return _alive
 		}
 		
+		/**
+		 * returns current live neighbours of a cell
+		 * @return
+		 */
 		protected function getLiveNeighboursCount():int 
 		{
 			var tmpCounter:int = 0
@@ -60,6 +64,9 @@ package pl.jaqjacek.games.gol.map
 			return _blocked;
 		}
 		
+		/**
+		 * check if with current parameters cell should change state to dead
+		 */
 		public function checkGoDead():void 
 		{
 			var tmpCounter:int = getLiveNeighboursCount()
@@ -67,11 +74,15 @@ package pl.jaqjacek.games.gol.map
 				_toggleState = true;
 		}
 		
+		/**
+		 * check if cell should by alive again.
+		 * Why GoUndead because if somthing was live and died and then still move its always a Zombie.
+		 */
 		public function checkGoUndead():void 
 		{
 			var tmpCounter:int = getLiveNeighboursCount()
 			if (tmpCounter == Config.ALIVE_NAIGHBOURS_TO_GO_UNDED) {
-				_toggleState = true;				
+				_toggleState = true;
 			}
 		}
 			
@@ -80,25 +91,35 @@ package pl.jaqjacek.games.gol.map
 			return _toggleState
 		}
 		
+		/**
+		 * main check function
+		 */
 		public function checkCell():void 
 		{
 			if (isBlocked)
 				return;
 				
-			isAlive ? checkGoDead(): checkGoUndead();			
+			isAlive ? checkGoDead(): checkGoUndead();
 			blockCell();
 		}
 		
+		/**
+		 * switch cell to next animation state and draw it current state
+		 */
 		public function nextGeneration():void 
 		{
 			if (isToggled) 
-				_alive = !_alive;			
+				_alive = !_alive;
 			
 			
 			reset();
 			draw();
 		} 
 		
+		/**
+		 *  draw curent cell representation
+		 *  TODO make it write to bitmapdata class its faster this way
+		 */
 		public function draw():void 
 		{
 			var fillColor:uint = isAlive ? Config.CELL_ALIVE_COLOR : Config.CELL_DEAD_COLOR;

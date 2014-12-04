@@ -14,6 +14,8 @@ package pl.jaqjacek.games.gol
 	/**
 	 * ...
 	 * @author jaq
+	 * old main clas
+	 * used before purvemvc 
 	 */
 	public class Main extends Sprite 
 	{

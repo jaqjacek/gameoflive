@@ -14,9 +14,9 @@ package pl.jaqjacek.games.gol.map
 	{
 		private var _patternText:TextField;
 		public function MiniMapButton() 
-		{		
+		{
 			super(Config.MINIMAP_WIDTH, Config.MINIMAP_HEIGHT);
-			_container.mouseChildren = false;					
+			_container.mouseChildren = false;
 		}
 		
 		override protected function findCellNeighboursAt(x:int, y:int):void 
@@ -24,6 +24,9 @@ package pl.jaqjacek.games.gol.map
 			//don't fill cell neighbours
 		}
 		
+		/**
+		 * add minimap name on bottom of map
+		 */
 		public function initMinimapName():void 
 		{
 			var tmpSprite:Sprite = _container.getChildByName("name_container") as Sprite
@@ -33,7 +36,7 @@ package pl.jaqjacek.games.gol.map
 			tmpSprite = new Sprite();
 			tmpSprite.graphics.beginFill(Config.MINI_MAP_BUTTON_TEXT_BACKGRAUND_COLOR);
 			tmpSprite.graphics.drawRect(1, 0, _container.width+1, Config.MINI_MAP_BUTTON_TEXT_HEIGHT);
-			tmpSprite.graphics.endFill();	
+			tmpSprite.graphics.endFill();
 			tmpSprite.y = _container.height;
 			_container.addChild(tmpSprite);
 			_patternText = new TextField();
@@ -43,16 +46,19 @@ package pl.jaqjacek.games.gol.map
 				_patternText.parent.removeChild(_patternText);
 			}
 			_patternText.width = _container.width;
-			_patternText.height = Config.MINI_MAP_BUTTON_TEXT_HEIGHT;	
+			_patternText.height = Config.MINI_MAP_BUTTON_TEXT_HEIGHT;
 			_patternText.text = _mapIniciator.getPatternName();
 			var tmpTF:TextFormat = _patternText.getTextFormat()
 			tmpTF.align = TextFormatAlign.CENTER;
 			tmpTF.color = Config.MINI_MAP_BUTTON_TEXT_FONT_COLOR;
 			_patternText.setTextFormat(tmpTF)	
-			tmpSprite.addChild(_patternText);		
+			tmpSprite.addChild(_patternText);
 			addFullButtonMask();
 		}
 		
+		/**
+		 * fill map background with right rectangle to make all map clickable
+		 */
 		private function addFullButtonMask():void 
 		{
 			var tmpSprite:Sprite = new Sprite();

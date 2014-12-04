@@ -7,6 +7,7 @@ package pl.jaqjacek.games.gol.map
 	/**
 	 * ...
 	 * @author jaq
+	 * main clas for map container
 	 */
 	public class Map 
 	{
@@ -30,6 +31,11 @@ package pl.jaqjacek.games.gol.map
 			_map 		= new Vector.<Vector.<Cell>>();	
 		}
 		
+		/**
+		 * create map according to gived dementions if width and height is 0 its create default one
+		 * @param	mapWidth
+		 * @param	mapHeight
+		 */
 		protected function createMap(mapWidth:int=0,mapHeight:int=0):void 
 		{
 			_mapWidth 	= !mapWidth ? Config.MAP_WIDTH:mapWidth;
@@ -57,6 +63,9 @@ package pl.jaqjacek.games.gol.map
 			return _mapHeight;
 		}
 		
+		/**
+		 * inicialize map cels
+		 */
 		protected function inicializeCells():void 
 		{
 			var tmpCell:Cell;
@@ -69,13 +78,18 @@ package pl.jaqjacek.games.gol.map
 					tmpCell.x = k * Config.CELL_WIDTH;
 					tmpCell.y = l * Config.CELL_HEIGHT;
 					
-					_container.addChild(tmpCell);					
+					_container.addChild(tmpCell);
 					tmpCell.draw();
 					findCellNeighboursAt(k, l);
 				}
 			}		
 		}
 		
+		/**
+		 * fill add cell neighbours
+		 * @param	x
+		 * @param	y
+		 */
 		protected function findCellNeighboursAt(x:int,y:int):void 
 		{
 			var tmpCell:Cell 	= getCell(x, y);
@@ -104,6 +118,9 @@ package pl.jaqjacek.games.gol.map
 			new ResetIniciator().inicializeMap(this);
 		}
 		
+		/**
+		 * find first alive cell in map and fill _cellToCheck vector
+		 */
 		private function fillFirstCheckCell():void 
 		{
 			var tmpCell:Cell
@@ -121,8 +138,12 @@ package pl.jaqjacek.games.gol.map
 			}			
 		}
 		
+		/**
+		 * main loop function
+		 */
 		public function update():void 
 		{
+			//init new cells to check vector and if not exist find _currentCellsToCheck
 			var tmpNewCellsToCheck:Vector.<Cell> = new Vector.<Cell>();
 			if (!_cellsToCheck.length) {
 				fillFirstCheckCell()
@@ -130,11 +151,11 @@ package pl.jaqjacek.games.gol.map
 				
 			for each (var item:Cell in _cellsToCheck) 
 			{
-				if (item.isBlocked)
+				if (item.isBlocked) // if item was allready check skip it
 					continue
 					
-				item.checkCell();
-				if (!item.isToggled) 
+				item.checkCell(); // check if cell should by live again, stay in the same state or die
+				if (!item.isToggled) // if item was allready check and state was change skip it
 					continue
 					
 				tmpNewCellsToCheck.push(item)
@@ -145,7 +166,7 @@ package pl.jaqjacek.games.gol.map
 			_cellsToCheck = tmpNewCellsToCheck;
 			for each (var itemz:Cell in _cellsToCheck) 
 			{
-				itemz.nextGeneration()
+				itemz.nextGeneration() // prepere cell for next generation
 			}
 		}
 		
@@ -169,6 +190,10 @@ package pl.jaqjacek.games.gol.map
 			_mapIniciator = value;
 		}
 		
+		/**
+		 * returns string that represent current map state
+		 * @return
+		 */
 		public function getMapString():String 
 		{
 			var resultString:String = '';

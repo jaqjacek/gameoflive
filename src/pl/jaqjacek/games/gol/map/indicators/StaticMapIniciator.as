@@ -5,6 +5,7 @@ package pl.jaqjacek.games.gol.map.indicators
 	/**
 	 * ...
 	 * @author jaq
+	 * Set map to data String gived 1 for live cell 0 for dead and | for next row
 	 */
 	public class StaticMapIniciator implements MapIniciator 
 	{
@@ -16,18 +17,18 @@ package pl.jaqjacek.games.gol.map.indicators
 			_patterString = patternName;
 		}
 		
-		/* INTERFACE pl.jaqjacek.games.gol.MapIniciator */
-		
 		public function inicializeMap(map:Map):void 
 		{
 			var tmpVector:Array = _initString.split("|");
 			var tmpHeight:int = tmpVector.length;
 			var tmpWidth:int = 0;
+			//get longest row
 			for each (var itemz:String in tmpVector) 
 			{
 				if (tmpWidth < itemz.length )
 					tmpWidth = itemz.length
 			}
+			//move pattern to middle fo map 
 			var startX:int = Math.floor(map.getWidth()/2 - tmpWidth/2)
 			var startY:int = Math.floor(map.getHeight() / 2 - tmpHeight / 2)
 			var tmpCell:Cell
@@ -43,8 +44,6 @@ package pl.jaqjacek.games.gol.map.indicators
 			}
 			
 		}
-		
-		/* INTERFACE pl.jaqjacek.games.gol.MapIniciator */
 		
 		public function getPatternName():String 
 		{

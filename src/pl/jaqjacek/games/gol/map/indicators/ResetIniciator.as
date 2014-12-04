@@ -4,6 +4,7 @@ package pl.jaqjacek.games.gol.map.indicators
 	/**
 	 * ...
 	 * @author jaq
+	 * resel all cels in map to Dead state
 	 */
 	public class ResetIniciator implements MapIniciator
 	{

@@ -8,6 +8,7 @@ package pl.jaqjacek.games.gameoflive.view
 	/**
 	 * ...
 	 * @author jaq
+	 * view for main menu of app
 	 */
 	public class MenuView extends Sprite
 	{
@@ -32,6 +33,9 @@ package pl.jaqjacek.games.gameoflive.view
 			addButtonsToShowGrid();	
 		}	
 		
+		/**
+		 * place buttons on in proper order and place
+		 */
 		private function addButtonsToShowGrid():void 
 		{
 			var tmpX:Number = 0;
@@ -55,6 +59,9 @@ package pl.jaqjacek.games.gameoflive.view
 			this.x = (maxWidth - this.width) / 2;
 		}
 		
+		/**
+		 * adds button click events
+		 */
 		private function initButtonsEvents():void 
 		{
 			for each (var item:MiniMapButton in _buttons) 
@@ -63,6 +70,9 @@ package pl.jaqjacek.games.gameoflive.view
 			}
 		}
 		
+		/**
+		 * remove buttons Click events
+		 */
 		private function removeButtonsEvents():void 
 		{
 			for each (var item:MiniMapButton in _buttons) 
@@ -73,6 +83,10 @@ package pl.jaqjacek.games.gameoflive.view
 			}
 		}
 		
+		/**
+		 * handle clic button
+		 * @param	e
+		 */
 		private function buttonClickHandler(e:MouseEvent):void 
 		{
 			for each (var item:MiniMapButton in _buttons) 

@@ -5,6 +5,7 @@ package pl.jaqjacek.games.gol.map.indicators
 	/**
 	 * ...
 	 * @author jaq
+	 * set all cells in map to random state
 	 */
 	public class RandomMapIniciator implements MapIniciator 
 	{
@@ -13,8 +14,6 @@ package pl.jaqjacek.games.gol.map.indicators
 		{
 			
 		}
-		
-		/* INTERFACE pl.jaqjacek.games.gol.MapIniciator */
 		
 		public function inicializeMap(map:Map):void 
 		{
@@ -34,8 +33,6 @@ package pl.jaqjacek.games.gol.map.indicators
 		{
 			return Math.random() * 10 > 5 ? true:false;
 		}
-		
-		/* INTERFACE pl.jaqjacek.games.gol.MapIniciator */
 		
 		public function getPatternName():String 
 		{
