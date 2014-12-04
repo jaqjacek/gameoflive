@@ -13,6 +13,7 @@ package pl.jaqjacek.games.gameoflive.view
 		static public const NAME:String = "IntroMediator_";
 		private var _introView:IntroView;
 		private var _startTime:Number;
+		static public const INTRO_SHOW_TIME:int = 2000;
 		
 		public function IntroMediator(viewComponent:Object=null) 
 		{
@@ -65,7 +66,7 @@ package pl.jaqjacek.games.gameoflive.view
 		private function checkIntroTimeoutHandler(e:Event):void 
 		{
 			var tmpTime:Number = new Date().time -_startTime ;
-			if (tmpTime > 2000) {				
+			if (tmpTime > INTRO_SHOW_TIME) {				
 				facade.sendNotification(IntroView.END);				
 			}
 		}
